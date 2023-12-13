@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>TASK MANAGEMENT</h1>
+    <a (click)="openAddOrEdit()" class="btn btn-sm btn-success mb-2">Add Task</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 30%">Task Title</th>
+                <th style="width: 30%">Description</th>
+                <th style="width: 30%">Status</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasklist" [ngClass]="task && task.status=='completed'?'text-white bg-success':''">
+                <td>{{task.title}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.status=='completed'?'Completed':'Open'}}</td>
+                <td style="white-space: nowrap">
+                    <button (click)="editTask(task)" class="btn btn-sm bg-info mr-1">Edit</button>
+                    <span class="mx-2"></span>
+                    <button (click)="complete(task)" class="btn btn-sm btn-primary mr-1">complete</button>
+                </td>
+            </tr>
+    
+        </tbody>
+    </table>
+</div>
+
